@@ -1,0 +1,13 @@
+FROM centos:7
+RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip && yum clean all
+USER root
+
+
+WORKDIR /stage
+ADD https://download.oracle.com/java/17/latest/jdk-17_linux-aarch64_bin.rpm .
+RUN rpm -ivh jdk-17_linux-aarch64_bin.rpm
+RUN ln -sd  /usr/java/jdk-17.0.2/ /usr/lib/jvm/java
+
+WORKDIR /
+RUN groupadd -r spring && adduser -r spring -g spring
+USER spring:spring
