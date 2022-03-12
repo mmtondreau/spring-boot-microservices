@@ -9,7 +9,9 @@ resilience4j:
   retry:
     instances:
       ChildOne:
-        maxRetryAttempts: 3
-        waitDuration: 2s
+        maxRetryAttempts: 5
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
         retryExceptions:
           - java.lang.Exception
