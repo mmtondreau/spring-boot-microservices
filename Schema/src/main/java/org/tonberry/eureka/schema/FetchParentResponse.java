@@ -5,11 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Builder(setterPrefix = "with")
 public class FetchParentResponse {
-    FetchChildOneResponse childOne;
-    FetchChildTwoResponse childTwo;
+    List<FetchChildOneResponse> childOne;
+    List<FetchChildTwoResponse> childTwo;
 }

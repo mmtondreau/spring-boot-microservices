@@ -5,3 +5,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka:8761/eureka/
+resilience4j:
+  retry:
+    instances:
+      ChildOne:
+        maxRetryAttempts: 3
+        waitDuration: 2s
+        retryExceptions:
+          - java.lang.Exception

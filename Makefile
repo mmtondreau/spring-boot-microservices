@@ -9,10 +9,18 @@ clean:
 java-build:
 	mvn install
 
-docker-build:
+docker-build: docker-build-childone docker-build-childtwo docker-build-eureka docker-build-parent
+
+docker-build-childone: java-build
 	cd ChildOne; $(MAKE) all
+
+docker-build-childtwo: java-build
 	cd ChildTwo; $(MAKE) all
+
+docker-build-parent: java-build
 	cd Parent; $(MAKE) all
+
+docker-build-eureka: java-build
 	cd EurekaServer; $(MAKE) all
 
 docker-build-base:

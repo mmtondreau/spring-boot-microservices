@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tonberry.eureka.schema.FetchChildTwoResponse;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,7 @@ public class Controller {
     }
 
     @RequestMapping("/fetch")
-    ResponseEntity<FetchChildTwoResponse> fetch() {
-        return ResponseEntity.of(Optional.of(FetchChildTwoResponse.builder().withData(DATA).build()));
+    Flux<FetchChildTwoResponse> fetch() {
+        return Flux.fromStream(DATA.stream().map(FetchChildTwoResponse::new));
     }
 }

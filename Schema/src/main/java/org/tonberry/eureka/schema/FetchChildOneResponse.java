@@ -12,5 +12,5 @@ import java.util.List;
 @Builder(setterPrefix = "with")
 @Getter
 public class FetchChildOneResponse {
-    private List<String> data;
+    private String data;
 }
