@@ -15,13 +15,12 @@ public class ChildOneController {
     @Autowired
     private WebClient.Builder webClientBuilder;
 
+    @Autowired
+    private ChildOneClient client;
+
     @Retry(name = "ChildOne", fallbackMethod = "fetchFallback")
     public List<FetchChildOneResponse> fetch() {
-        return webClientBuilder.build()
-                .get()
-                .uri("http://ChildOne/fetch")
-                .retrieve()
-                .bodyToFlux(FetchChildOneResponse.class)
+        return client.fetch()
                 .collectList()
                 .block(Duration.ofSeconds(30));
     }

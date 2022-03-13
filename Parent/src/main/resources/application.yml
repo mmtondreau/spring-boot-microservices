@@ -5,6 +5,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 15
 resilience4j:
   retry:
     instances:
@@ -15,3 +18,6 @@ resilience4j:
         exponentialBackoffMultiplier: 2
         retryExceptions:
           - java.lang.Exception
+feign:
+  circuitbreaker:
+    enabled: true
