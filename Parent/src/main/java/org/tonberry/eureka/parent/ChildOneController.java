@@ -13,16 +13,15 @@ import java.util.List;
 public class ChildOneController {
 
     @Autowired
-    private WebClient.Builder webClientBuilder;
-
-    @Autowired
     private ChildOneClient client;
 
     @Retry(name = "ChildOne", fallbackMethod = "fetchFallback")
     public List<FetchChildOneResponse> fetch() {
-        return client.fetch()
+        var result = client.fetch()
                 .collectList()
                 .block(Duration.ofSeconds(30));
+        result.add(FetchChildOneResponse.builder().withData("Blarp-o-o-000").build());
+        return result;
     }
 
     public List<FetchChildOneResponse> fetchFallback(Throwable t) {

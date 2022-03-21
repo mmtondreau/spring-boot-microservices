@@ -1,8 +1,6 @@
 FROM tonberry/spring-jdk17:latest
-ARG DEPENDENCY=target/dependency
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY ${DEPENDENCY}/META-INF /app/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /app
+
+COPY target/EurekaServer.jar /EurekaServer.jar
+
 EXPOSE 8080
-#ENTRYPOINT [ "tail", "-f", "/dev/null"]
-ENTRYPOINT ["java","-cp","app:app/lib/*","org.tonberry.eureka.eurekaserver.Application"]
+ENTRYPOINT ["java","-jar","/EurekaServer.jar"]
