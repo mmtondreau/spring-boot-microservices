@@ -13,3 +13,21 @@ my.pingMessage: error
 logging:
   level:
     root: INFO
+db:
+  url: jdbc:postgresql://localhost:5432/tonberry
+  username: tonberry
+  password: password123
+spring:
+  datasource:
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+  r2dbc:
+    username: ${db.username}
+    password: ${db.password}
+    url: r2dbc:postgresql://localhost:5432/tonberry
+  flyway:
+    url: ${db.url}
+    schemas: flyway
+    user: ${db.username}
+    password: ${db.password}

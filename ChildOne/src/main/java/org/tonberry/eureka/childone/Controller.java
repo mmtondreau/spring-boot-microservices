@@ -16,6 +16,9 @@ public class Controller {
     private static final List<String> DATA = List.of("Cat", "Dog", "Bird");
 
     @Autowired
+    DataRepository dataRepository;
+
+    @Autowired
     ConfigProperties configProperties;
 
     @RequestMapping("/ping")
@@ -25,7 +28,7 @@ public class Controller {
 
     @RequestMapping("/fetch")
     Flux<FetchChildOneResponse> fetch() {
-        return Flux.fromStream(DATA.stream().map(FetchChildOneResponse::new));
+        return dataRepository.findAll().map(data -> new FetchChildOneResponse(data.getValue()));
 
     }
 }

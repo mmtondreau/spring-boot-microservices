@@ -36,3 +36,11 @@ services:
     image: tonberry/config:latest
     ports:
       - 8888:8888
+  db:
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=tonberry
+      - POSTGRES_DB=tonberry
+      - POSTGRES_PASSWORD=password123
+    ports:
+      - "5432:5432"
