@@ -3,7 +3,6 @@ package org.tonberry.eureka.parent;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.tonberry.eureka.schema.FetchChildOneResponse;
 
 import java.time.Duration;

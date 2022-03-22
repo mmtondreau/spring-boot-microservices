@@ -1,1 +1,15 @@
-
+management.endpoints.web.exposure.include: info,health,refresh
+management:
+  endpoint:
+    restart:
+      enabled: true
+    refresh:
+      enabled: true
+    health:
+      show-details: always
+    info:
+      enabled: true
+my.pingMessage: error
+logging:
+  level:
+    root: INFO

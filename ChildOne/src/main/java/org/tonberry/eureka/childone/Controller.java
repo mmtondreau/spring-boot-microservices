@@ -1,6 +1,7 @@
 package org.tonberry.eureka.childone;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,12 +15,12 @@ import java.util.Optional;
 public class Controller {
     private static final List<String> DATA = List.of("Cat", "Dog", "Bird");
 
-    @Value("${pingMessage}")
-    private String pingMessage;
+    @Autowired
+    ConfigProperties configProperties;
 
     @RequestMapping("/ping")
     ResponseEntity<String> ping() {
-        return ResponseEntity.of(Optional.of(pingMessage));
+        return ResponseEntity.of(Optional.of(configProperties.getPingMessage()));
     }
 
     @RequestMapping("/fetch")
