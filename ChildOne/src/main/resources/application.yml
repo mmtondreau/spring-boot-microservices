@@ -14,20 +14,20 @@ logging:
   level:
     root: INFO
 db:
-  url: ${db.url.jdbc:#{jdbc:postgresql://localhost:5432/tonberry}}
-  username: tonberry
-  password: password123
+  url: jdbc:postgresql://${db.url:#{localhost:5432/tonberry}}
+  username: ${db.username}
+  password: ${db.password}
 spring:
   datasource:
-    url: ${db.url.jdbc:#{jdbc:postgresql://localhost:5432/tonberry}}
+    url: jdbc:postgresql://${db.url:#{localhost:5432/tonberry}}
     username: ${db.username}
     password: ${db.password}
   r2dbc:
     username: ${db.username}
     password: ${db.password}
-    url: ${db.url.r2dbc:#{r2dbc:postgresql://localhost:5432/tonberry}}
+    url: r2dbc:postgresql://${db.url:#{localhost:5432/tonberry}}
   flyway:
-    url: ${db.url.jdbc:#{jdbc:postgresql://localhost:5432/tonberry}}
+    url: jdbc:postgresql://${db.url:#{localhost:5432/tonberry}}
     schemas: flyway
     user: ${db.username}
     password: ${db.password}

@@ -4,8 +4,7 @@ services:
     environment:
       - db.password=password123
       - db.username=tonberry
-      - db.url.jdbc=jdbc:postgresql://db:5432/tonberry
-      - db.url.r2dbc=r2dbc:postgresql://db:5432/tonberry
+      - db.url=db:5432/tonberry
     links:
       - eureka
       - config
