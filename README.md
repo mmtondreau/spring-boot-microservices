@@ -10,11 +10,12 @@ This repo demonstrates a simple Spring Boot microservice cloud that utilzies:
 It is composed of 5 applications: 
 
 1. Parent - The edge service that provides the core API to clients. Has two endpoints `fetch` and `ping`. Calls ChildOne and ChildTwo using WebFlux and Resilience4J.
-2. ChildOne - Represnets an internal service that's backed by an Postgres DB using R2JDBC
-3. ChildTwo - Represents a second internal service with an hard coded response.
+2. Child One - Represnets an internal service that's backed by an Postgres DB using R2JDBC
+3. Child Two - Represents a second internal service with an hard coded response.
 4. Eureka - The service discovery server
 5. Config - the configuration server with configurations stored at https://github.com/mmtondreau/spring-boot-config
 
+![diagram](docs/arch.png)
 ## Build & Deploy
 
 ```shell
